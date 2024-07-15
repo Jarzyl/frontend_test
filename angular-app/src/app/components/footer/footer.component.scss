@@ -1,0 +1,157 @@
+@import "../../../styles/variables";
+
+@mixin arrow-base($color) {
+  border: solid $color;
+  border-width: 0 0.188rem 0.188rem 0;
+  display: inline-block;
+  padding: 0.188rem;
+}
+
+.footer {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #15161a;
+  padding: 1rem;
+  z-index: 2;
+  top: 100%;
+
+  &__text {
+    position: relative;
+    cursor: pointer;
+    color: $gray;
+    font-size: 1.2rem;
+    margin: 0.7rem;
+
+    &:hover {
+      color: $white;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -0.438rem;
+      left: -0.313rem;
+      right: 1.063rem;
+      bottom: -0.438rem;
+      border: 0.125rem solid $gray;
+      transition: transform 0.5s;
+    }
+
+    &:hover::before {
+      transform: rotate(360deg);
+      border-color: $orange;
+    }
+  }
+
+  &__middle-text {
+    display: none;
+    justify-self: center;
+    margin: auto;
+    transform: translateX(50%);
+    align-items: center;
+    color: $gray;
+    font-size: 1.25rem;
+
+    @media (min-width: $large-screen) {
+      display: flex;
+    }
+  }
+
+  .line {
+    padding-left: 2rem;
+    margin: 0 0.5rem;
+    border-bottom: 0.063rem solid $gray;
+    line-height: 0.05rem;
+  }
+
+  &__frame {
+    position: absolute;
+    right: 1rem;
+    padding: 0.5rem;
+    background-color: $white;
+    width: 15rem;
+    border-radius: 0.125rem;
+    transform: translateY(-100%);
+    transition: transform 0.5s;
+    z-index: 1;
+
+    &--visible {
+      transform: translateY(-250%);
+    }
+
+    button {
+      border: none;
+      background: none;
+      margin: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      color: $orange;
+
+      .arrow-right {
+        @include arrow-base($orange);
+        color: $orange;
+        margin-right: 1rem;
+        transform: rotate(45deg) translateY(-60%) translateX(-40%);
+        -webkit-transform: rotate(-45deg) translateY(-60%) translateX(-40%);
+      }
+    }
+  }
+
+  &__btn {
+    background: none;
+    background-color: #0011ff00;
+    color: #9ea4b2;
+    border: 0.063rem solid #272a30;
+    padding: 1rem 6rem;
+    margin: 0.5rem;
+    border-radius: 0.313rem;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  &__button:hover {
+    color: $white;
+    border: 0.063rem solid $white;
+
+    .arrow {
+      @include arrow-base($white);
+      margin-left: 1rem;
+      transform: rotate(-135deg) translateY(-50%);
+      -webkit-transform: rotate(-135deg) translateY(-50%);
+    }
+  }
+}
+
+.arrow {
+  @include arrow-base(#9ea4b2);
+  margin-left: 1em;
+  transform: rotate(-135deg) translateY(-50%);
+  -webkit-transform: rotate(-135deg) translateY(-50%);
+}
+
+.arrow.down {
+  transition: transform 0.5s;
+}
+
+.footer__button.active .arrow.down {
+  transform: rotate(45deg) translateY(-50%);
+}
+
+.active {
+  color: $white;
+  border: 1px solid $white;
+}
+
+.arrow-right {
+  @include arrow-base(black);
+  margin-right: 1em;
+  transform: rotate(45deg) translateY(-60%) translateX(-40%);
+  -webkit-transform: rotate(-45deg) translateY(-60%) translateX(-40%);
+}

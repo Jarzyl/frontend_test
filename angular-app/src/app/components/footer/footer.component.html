@@ -1,0 +1,17 @@
+<footer class="footer">
+    <div class="footer__text">
+      CSS<br /> 
+      IS<br /> 
+      AWESOME
+    </div>
+    <div class="footer__middle-text">
+      <span class="line"></span>
+      nabthat
+      <span class="line"></span>
+    </div>
+    <button aria-label="pokaż zawartość" class="footer__btn" [ngClass]="{'active': buttonActive}" (click)="toggle()">POKAŻ<i class="arrow down"></i></button>
+  </footer>
+  <div class="footer__frame" [ngClass]="{'footer__frame--visible': frameVisible}">
+    <button aria-label="zresetuj ustawienia" class="footer__frame__btn" (click)="resetSettings()"><i class="arrow-right"></i>ZRESETUJ USTAWIENIA</button>
+    <button aria-label="pokaż dane" class="footer__frame__btn" (click)="showName()"><i class="arrow-right"></i>POKAŻ DANE OSOBOWE</button>
+  </div>
