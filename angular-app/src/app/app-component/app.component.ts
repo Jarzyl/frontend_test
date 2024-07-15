@@ -10,6 +10,7 @@ import { HeaderComponent } from "../components/header/header.component";
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
 })
+
 export class AppComponent {
   title = "angular-app";
 }
